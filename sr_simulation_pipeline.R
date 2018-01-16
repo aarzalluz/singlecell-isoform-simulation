@@ -39,7 +39,7 @@ for(i in seq(nrow(sim_parameters))){
                       fold_changes = fold_changes, paired = sim_parameters$paired[i])
 }
 # run simulate_experiment for unfragmented transcriptome (generate simulated full-length reads)
-simulate_experiment(fasta = "data/transcriptome.fasta", 
+simulate_experiment(fasta = "transcriptome/transcriptome.fasta", 
                     outdir = "NSC_full_length", num_reps = 1, reads_per_transcript = NSC, readlen = 250,
                     fold_changes = fold_changes, paired = TRUE)
 
