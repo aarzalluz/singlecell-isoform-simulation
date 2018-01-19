@@ -43,9 +43,9 @@ simulate_experiment(fasta = "transcriptome/transcriptome.fasta",
                     outdir = "NSC_full_length", num_reps = 1, reads_per_transcript = NSC, readlen = 250,
                     fold_changes = fold_changes, paired = TRUE)
 
-#-----------------------------------------------------------
-# align and quantify isoform expression using RSEM + STAR
-#-----------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------
+# OPTION 1 
+# Manually align simulated reads and quantify isoform expression using RSEM + STAR
 
 # PROCESS RSEM RESULTS
 # load and process REFERENCE data (i.e. quantification of reads from full-length transcripts)
@@ -71,13 +71,14 @@ load("data/gene.isoform_table.rda")
 annot_count <- rle(gene.isoform_table$associatedGene) # count no. of isoforms per gene in the annotation
 mig.annot <- make_mig_ref(hash(annot_count$values, annot_count$lengths)) # make hash of MIG in annotation
 
-#------------------------------------------------------------------------------------------------------------------------------
-# NOTE: The bit of code above is used to load and process the results of the RSEM run on the simulated and full-length reads. 
-# Alternatively, the already processed data can be loaded:
+# OPTION 2
+# Alternatively, if one wishes to skip the RSEM+STAR step, the already processed data can be loaded from
+# the data folder:
 load("data/sr_sim.isoform.results.NSC.rda") # load sim.results.NSC list of hashes
 load("data/sr_full-length.isoform.results.NSC.rda") # load NSC_h hash
 load("data/sr_full-length.reference.hash.rda") # load mig.NSC, full-length reference hash to compare UMI simulations to
 load("data/sr_annot.reference.hash.rda") # load mig.annot, annotation reference hash to compare full-length simulation to
+
 #------------------------------------------------------------------------------------------------------------------------------
 
 # ANALYSE NO. OF ISOFORMS DETECTED PER MULTI-ISOFORM GENE
