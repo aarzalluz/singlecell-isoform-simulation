@@ -78,8 +78,4 @@ cd rsem_results
 
 ### References
 
-Tardaguila, Manuel, Lorena de la Fuente, Cristina Marti, Cécile Pereira, Hector Risco, 
-Maravillas Mellado, Marissa Macchietto, Kenneth Verheggen, and Mariola Edelmann. 2017. 
-“SQANTI : Extensive Characterization of Long Read Transcript Sequences for Quality Control 
-in Full-Length Transcriptome Identification and Quantification.” bioRxiv, August, 1–28. 
-https://doi.org/10.1101/118083.
+Tardaguila M, de la Fuente L, Marti C, Pereira C, Pardo-Palacios FJ, del Risco H, et al. SQANTI: extensive characterization of long-read transcript sequences for quality control in full-length transcriptome identification and quantification. Genome Res. 2018. doi:10.1101/gr.222976.117. 
