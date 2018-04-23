@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 
 # LOAD REQUIRED CUSTOM FUNCTIONS
-source("sr_simulation_functions.R")
+source("lr_simulation_functions.R")
 
 # PREPARE DATA
 # load and clean expression values to convert into number of reads per transcript
@@ -44,19 +44,19 @@ mig.summary <- data.frame(cell.no = rep(cells, 2) %>% as.factor,
                           sample = c(rep("NSC", 5), rep("OLD", 5)))
 mig.summary$sample <- factor(mig.summary$sample, labels = c("Neural stem cells", "Oligodendrocytes"))
 
-podium_ch_genes <- list() # make empty list
+iso_switch_genes <- list() # make empty list
 
 # recursively call new function and store list of genes
 for(i in seq(length(expr_matrices.NSC))){
-  podium_ch_genes[[i]] <- compare_mig(expr_matrices.NSC, expr_matrices.OLD, counts.NSC, counts.OLD, i)
+  iso_switch_genes[[i]] <- compare_mig(expr_matrices.NSC, expr_matrices.OLD, counts.NSC, counts.OLD, i)
 }
 # count no. of podium changes per simulation and make data frame for plotting
-podium_ch_counts <- lapply(podium_ch_genes, length) %>% unlist
-pch.summary <- data.frame(cell.no = cells %>% as.factor, podium_changes = podium_ch_counts)
+iso_switch_counts <- lapply(iso_switch_genes, length) %>% unlist
+pch.summary <- data.frame(cell.no = cells %>% as.factor, isoform_switches = iso_switch_counts)
 
 # RESULT PLOTS
 # plot number of MIG detected per simulation
-mig.bulk <- 2423 # total no. of genes with >1 isoform in Tardaguila et al. 2017 data
+mig.bulk <- 2423 # total no. of genes with >1 isoform in Tardaguila et al. 2018 data
 
 ggplot(mig.summary, aes(x = cell.no, y = MIG, fill = sample)) +
   geom_bar(stat = "identity",  position = position_dodge(), colour = "black", width = 0.75) +
@@ -70,15 +70,15 @@ ggplot(mig.summary, aes(x = cell.no, y = MIG, fill = sample)) +
   annotate("text", x = 2, y = mig.bulk, vjust = -0.5, hjust = -0.2, label = "Original data: 2423 MIG", 
            size = 9, family = "AvantGarde", color = "gray20")
 
-# plot number of podium changes per simulation
-pch.bulk <- 337   # number of podium changes in Tardaguila et al. 2017 data
+# plot number of isoform switches per simulation
+pch.bulk <- 337   # number of isoform switches in Tardaguila et al. 2018 data
 
-ggplot(pch.summary, aes(x = cell.no, y = podium_changes)) + 
+ggplot(pch.summary, aes(x = cell.no, y = isoform_switches)) + 
   geom_bar(stat = "identity", position = position_dodge(), colour = "black", width = 0.5, fill = "#D2701F") +
   geom_hline(yintercept = pch.bulk, linetype = "dashed", size = 1, colour = "gray20") + 
   labs(x = "Number of single cells per Sequel run (total = 1 million reads)", 
-       y = "Number of podium changes detected") +
+       y = "Number of isoform switches detected") +
   theme(text = element_text(family = "AvantGarde"),  axis.text = element_text(size = 28), axis.title = element_text(size = 28)) +
   scale_x_discrete(breaks = c("2", "6", "10", "16", "20"), labels = paste0(cells, "\n", "(", reads, " reads)", "\n")) +
-  annotate("text", x = 2, y = pch.bulk, vjust = 1.5, hjust = -0.2, label = "Original data: 337 podium changes", 
+  annotate("text", x = 2, y = pch.bulk, vjust = 1.5, hjust = -0.2, label = "Original data: 337 isoform switches", 
            size = 9, family = "AvantGarde", color = "gray20")
