@@ -160,4 +160,35 @@ ggplot() + ggtitle("Neural stem cells \n") +
   scale_fill_manual(name = "Isoform resolution \nper MIG \n", values = c("#0C6A2B", "#8D1D1D", "#D2701F", "#044771")) +
   facet_grid(end ~ library, scales = "free", space = "free")
 
+# PLOT RESULTS
+# MAKE BOXPLOT of transcript lengths uncovered in subsequent UMI simulations
+# get lengths of transcript sequences
+library(stringr)
+headers_lgl <- str_detect(transcriptome, ">")
+seqs <- transcriptome[!headers_lgl]
+lengths <- str_length(seqs)
+
+trim_lengths <- c(100, 200, 300, 500, 1000)
+
+# calculate percentage uncovered when transcript is fragmented
+library(purrr)
+fragment_lengths <- map(lengths, ~((. - trim_lengths) / .)) 
+
+# format data as factors for plotting
+plot_trimming <- data.frame(missing_pcnt = unlist(fragment_lengths), 
+                            trim_length = ordered(rep(trim_lengths, length(fragment_lengths))))
+
+# replace values < 0 with 0
+# when transcript length < trimmed fragment, the transcript is left intact, and therefore fully covered
+lgl <- plot_trimming$missing_pcnt < 0
+plot_trimming$missing_pcnt[lgl] <- 0
+
+# boxplot of distribution of proportion uncovered for different  UMI simulations
+ggplot(plot_trimming, aes(y = missing_pcnt, x = trim_length, fill = trim_length)) + 
+  geom_boxplot(outlier.alpha = 0.7, size = 4, outlier.size = 4) + 
+  labs(x = "\n Fragment covered by UMIs (bp)", y = "Proportion of transcript length uncovered \n") +
+  theme_minimal() +
+  theme(text = element_text(family = "AvantGarde"), axis.text = element_text(size = 56), 
+        axis.title.x = element_text(size = 56), axis.title.y = element_text(size = 56)) + 
+  guides(fill = FALSE)
 
