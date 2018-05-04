@@ -144,19 +144,20 @@ dev.off()
 # generated from the 5' end of transcripts using NSC expression values, and manually combining both data frames.
 load("data/sr_pcnt.interval.results.both.ends.rda")
 
-ggplot() + ggtitle("Neural stem cells") + 
+ggplot() + ggtitle("Neural stem cells \n") + 
   geom_bar(data = pcnt_intervals.NSC.3and5end, aes(fill = interval, x = nucleotides, y = percentage), width = 0.75, 
            position = "fill", stat = "identity", colour = "black") +
-  labs(x = "No. of nucleotides sequenced", y = "% of MIG in sample") +
+  labs(x = "\n No. of nucleotides sequenced", y = "% of MIG in sample \n") +
   scale_y_continuous(labels = percent_format()) +
-  theme(text = element_text(family = "AvantGarde"), axis.text = element_text(size = 28), 
-        axis.title.x = element_text(size = 30), axis.title.y = element_text(size = 30),
-        legend.text = element_text(size = 28), legend.title = element_text(size = 28),
+  theme_minimal() +
+  theme(text = element_text(family = "AvantGarde"), axis.text = element_text(size = 40), 
+        axis.title.x = element_text(size = 44), axis.title.y = element_text(size = 44),
+        legend.text = element_text(size = 32), legend.title = element_text(size = 32),
         #legend.position = "bottom",
-        plot.title = element_text(size = 40, hjust = 0.5, face = "bold"),
-        strip.text.x = element_text(size= 30), strip.text.y = element_text(size= 30),
+        plot.title = element_text(size = 44, hjust = 0.5, face = "bold"),
+        strip.text.x = element_text(size= 40), strip.text.y = element_text(size= 36),
         strip.background = element_rect(colour = "black")) +
-  scale_fill_manual(name = "Isoform resolution \nper MIG", values = c("#0C6A2B", "#8D1D1D", "#D2701F", "#044771")) +
+  scale_fill_manual(name = "Isoform resolution \nper MIG \n", values = c("#0C6A2B", "#8D1D1D", "#D2701F", "#044771")) +
   facet_grid(end ~ library, scales = "free", space = "free")
 
 

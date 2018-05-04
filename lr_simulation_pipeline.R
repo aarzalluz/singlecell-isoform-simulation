@@ -59,26 +59,28 @@ pch.summary <- data.frame(cell.no = cells %>% as.factor, isoform_switches = iso_
 mig.bulk <- 2423 # total no. of genes with >1 isoform in Tardaguila et al. 2018 data
 
 ggplot(mig.summary, aes(x = cell.no, y = MIG, fill = sample)) +
-  geom_bar(stat = "identity",  position = position_dodge(), colour = "black", width = 0.75) +
+  geom_bar(stat = "identity",  position = position_dodge(), colour = "black", width = 0.75, size = 2) +
     geom_hline(yintercept = mig.bulk, linetype = "dashed", size = 1, colour = "gray20") + 
-  labs(x = "Number of single cells per Sequel run (total = 1 million reads)", 
-       y = "Number of multi-isoform genes detected", fill = "Cell type: ") + ylim(0, 2500) +
-  theme(text = element_text(family = "AvantGarde"), axis.text = element_text(size = 28), axis.title = element_text(size = 28), 
-        legend.text = element_text(size = 28), legend.title = element_text(size = 28),
+  labs(x = "\n Number of single cells per Sequel run (total = 1 million reads) \n", 
+       y = "Multi-isoform genes detected \n", fill = "Cell type: ") + ylim(0, 2500) +
+  theme_minimal() +
+  theme(text = element_text(family = "AvantGarde"), axis.text = element_text(size = 56), axis.title = element_text(size = 56), 
+        legend.text = element_text(size = 40), legend.title = element_text(size = 40),
         legend.position = "bottom") +
-  scale_x_discrete(breaks = c("2", "6", "10", "16", "20"), labels = paste0(cells, "\n", "(", reads, " reads)", "\n")) +
+  scale_x_discrete(breaks = c("2", "6", "10", "16", "20")) +
   annotate("text", x = 2, y = mig.bulk, vjust = -0.5, hjust = -0.2, label = "Original data: 2423 MIG", 
-           size = 9, family = "AvantGarde", color = "gray20")
+           size = 14, family = "AvantGarde", color = "gray20")
 
 # plot number of isoform switches per simulation
 pch.bulk <- 337   # number of isoform switches in Tardaguila et al. 2018 data
 
 ggplot(pch.summary, aes(x = cell.no, y = isoform_switches)) + 
-  geom_bar(stat = "identity", position = position_dodge(), colour = "black", width = 0.5, fill = "#D2701F") +
+  geom_bar(stat = "identity", position = position_dodge(), colour = "black", width = 0.5, size = 2, fill = "#D2701F") +
   geom_hline(yintercept = pch.bulk, linetype = "dashed", size = 1, colour = "gray20") + 
-  labs(x = "Number of single cells per Sequel run (total = 1 million reads)", 
-       y = "Number of isoform switches detected") +
-  theme(text = element_text(family = "AvantGarde"),  axis.text = element_text(size = 28), axis.title = element_text(size = 28)) +
-  scale_x_discrete(breaks = c("2", "6", "10", "16", "20"), labels = paste0(cells, "\n", "(", reads, " reads)", "\n")) +
+  labs(x = "\n Number of single cells per Sequel run (total = 1 million reads) \n", 
+       y = "Isoform switches detected \n") +
+  theme_minimal() +
+  theme(text = element_text(family = "AvantGarde"),  axis.text = element_text(size = 56), axis.title = element_text(size = 56)) +
+  scale_x_discrete(breaks = c("2", "6", "10", "16", "20")) +
   annotate("text", x = 2, y = pch.bulk, vjust = 1.5, hjust = -0.2, label = "Original data: 337 isoform switches", 
-           size = 9, family = "AvantGarde", color = "gray20")
+           size = 14, family = "AvantGarde", color = "gray20")
