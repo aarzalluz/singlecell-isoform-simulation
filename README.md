@@ -2,7 +2,7 @@
 
 This repository contains the custom code used to produce the simulation 
 that is shown in our manuscript "Single-cell RNAseq for the study of isoforms:
-how is that possible?", by Ana Conesa and Ángeles Arzalluz-Luque.
+how is that possible?", by Ángeles Arzalluz-Luque and Ana Conesa.
 
 ### .R files
 
