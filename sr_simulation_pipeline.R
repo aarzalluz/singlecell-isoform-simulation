@@ -184,8 +184,8 @@ lgl <- plot_trimming$missing_pcnt < 0
 plot_trimming$missing_pcnt[lgl] <- 0
 
 # boxplot of distribution of proportion uncovered for different  UMI simulations
-ggplot(plot_trimming, aes(y = missing_pcnt, x = trim_length, fill = trim_length)) + 
-  geom_boxplot(outlier.alpha = 0.7, size = 4, outlier.size = 4) + 
+ggplot(plot_trimming, aes(y = missing_pcnt, x = trim_length)) + 
+  geom_boxplot(outlier.alpha = 0.7, size = 4, outlier.size = 4, fill = "#73C23F") + 
   labs(x = "\n Fragment covered by UMIs (bp)", y = "Proportion of transcript length uncovered \n") +
   theme_minimal() +
   theme(text = element_text(family = "AvantGarde"), axis.text = element_text(size = 56), 
