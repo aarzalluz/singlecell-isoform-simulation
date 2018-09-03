@@ -275,7 +275,7 @@ ggplot() + ggtitle("Neural stem cells \n") +
 
 ### Analyse simulated length bias
 
-To ensure that the simulated UMI reads successfully recreate a coverage bias, we perform an analysis of the percentage of the trancripts that is left uncovered in each of our simulations.
+To ensure that the simulated UMI reads successfully recreate a coverage bias, we perform an analysis of the percentage of the trancripts that is left uncovered in each of our simulations (see Figure 5.a in our manuscript).
 
 ```
 # get lengths of transcript sequences
