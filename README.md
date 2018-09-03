@@ -78,7 +78,7 @@ cd rsem_results
 
 ### References
 
-1. Arzalluz-Luqueángeles, Conesa A. Single-cell RNAseq for the study of isoforms-how is that possible? Genome Biol. 2018;19:1–19.
+1. Arzalluz-Luque A, Conesa A. Single-cell RNAseq for the study of isoforms-how is that possible? Genome Biol. 2018;19:1–19.
 https://doi.org/10.1186/s13059-018-1496-z
 
 2. Tardaguila M, de la Fuente L, Marti C, Pereira C, Pardo-Palacios FJ, del Risco H, et al. SQANTI: extensive characterization of long-read transcript sequences for quality control in full-length transcriptome identification and quantification. Genome Res. 2018. https://doi.org/10.1101/gr.222976.117
