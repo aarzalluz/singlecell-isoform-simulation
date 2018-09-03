@@ -6,16 +6,14 @@ how is that possible?", by Ángeles Arzalluz-Luque and Ana Conesa [1].
 
 ### .R files
 
-The prefixes `sr` and `lr` are short for short and long reads, respectively, and designate the 
+The prefixes `sr` and `lr` are short for short and long reads, respectively. They designate the 
 `simulation_function` files in the [R folder](https://github.com/aarzalluz/singlecell-isoform-simulation/tree/master/R), 
-which contain custom functions that implement some of the main steps of the simulation.
+which contain custom functions that implement some of the main steps of the simulation, and the [vignette](https://github.com/aarzalluz/singlecell-isoform-simulation/tree/master/vignettes) files.
 
 
 ### Data
 
-The repository includes the necessary data to run the pipeline from the beginning,
-in the form of .RData files. These files are also designated whith appropriate
-prefixes where needed.
+The [data](https://github.com/aarzalluz/singlecell-isoform-simulation/tree/master/data) folder includes the necessary data to run the pipeline from the beginning, in the form of .RData files. These files are also designated whith appropriate prefixes where needed.
 
 - `sr_trancsriptome.rda`: contains the transcript sequences from Tardaguila et al. [2],
 upon which we based our simulation, and their fasta headers.
@@ -30,6 +28,8 @@ avoid running this part of the pipeline (see next section).
 correspond to and how they can be loaded is specified in the short read simulation vignette.
 
 ### Transcriptome files
+
+Found in the [transcriptome](https://github.com/aarzalluz/singlecell-isoform-simulation/tree/master/transcriptome) folder:
 
 - `transcriptome.fasta` is the transcriptome fasta file from Tardaguila et al. [2], necessary
 to simulate reads from full-length transcripts using the polyester package.
@@ -46,8 +46,7 @@ source("sr_simulation_functions.R")
 load("data/sr_transcriptome.rda")
 ```
 
-as specified in the frist lines of the [short read simulation vignette](sr_simulation_pipeline.md). Then, follow the rest of the
-vignette.
+as specified in the frist lines of the short read simulation vignette. Then, follow the [vignettes](https://github.com/aarzalluz/singlecell-isoform-simulation/tree/master/vignettes).
 
 ### References
 
