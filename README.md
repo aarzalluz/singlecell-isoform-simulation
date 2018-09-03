@@ -20,7 +20,7 @@ The respository includes the necessary data to run the pipeline from the beginni
 in the form of .RData files. These files are also designated whith appropriate
 prefixes where needed.
 
-- `sr_trancsriptome.rda`: contains the transcript sequences from in Tardaguila et al. (2017),
+- `sr_trancsriptome.rda`: contains the transcript sequences from Tardaguila et al. [2],
 upon which we based our simulation, and their fasta headers.
 - `gene.isoform_table.rda`: contains the isoform name and the gene they belong to, also obtained
 from the Tardaguila et al. [2] transcriptome.
