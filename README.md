@@ -7,13 +7,13 @@ how is that possible?", by Ángeles Arzalluz-Luque and Ana Conesa [1].
 ### .R files
 
 The prefixes `sr` and `lr` are short for short and long reads, respectively, and designate the 
-`simulation_function` files, which contain custom functions that implement some of the main steps 
-of the simulation.
+`simulation_function` files in the [R folder](https://github.com/aarzalluz/singlecell-isoform-simulation/tree/master/R), 
+which contain custom functions that implement some of the main steps of the simulation.
 
 
 ### Data
 
-The respository includes the necessary data to run the pipeline from the beginning,
+The repository includes the necessary data to run the pipeline from the beginning,
 in the form of .RData files. These files are also designated whith appropriate
 prefixes where needed.
 
@@ -39,14 +39,15 @@ Although it is not necessary to run the R code, it is required to run RSEM + STA
 ### Instructions for running the simulations
 
 Download this repository, and change your working directory in R to the corresponding folder. Then, source the 
-.R files containing the custom simulation functions and load the data. For instance, to start running the short-read simulation, execute the following in the R terminal
+.R files containing the custom simulation functions and load the data. For instance, to start running the short-read simulation, execute the following in the R terminal:
 
 ```
 source("sr_simulation_functions.R")
 load("data/sr_transcriptome.rda")
 ```
 
-as specified in the frist lines of the short read simulation vignette. Then, follow the rest of the vignette. 
+as specified in the frist lines of the [short read simulation vignette](sr_simulation_pipeline.md). Then, follow the rest of the
+vignette.
 
 ### References
 
