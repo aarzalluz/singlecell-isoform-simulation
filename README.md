@@ -6,13 +6,10 @@ how is that possible?", by Ángeles Arzalluz-Luque and Ana Conesa [1].
 
 ### .R files
 
-- The prefixes `sr` and `lr` are short for short and long reads, respectively,
-and designate which simulation the code is associated with.
-- `simulation_function` files contain custom functions that implement some of the
-main steps of the simulation.
-- `simulation_pipeline` files are scripts that contain the necessary code to run
-the simulation from beginning to end. It also contains plenty of information on the logic behind
-the code in the form of comments.
+The prefixes `sr` and `lr` are short for short and long reads, respectively, and designate the 
+`simulation_function` files, which contain custom functions that implement some of the main steps 
+of the simulation.
+
 
 ### Data
 
@@ -30,7 +27,7 @@ their two replicates.
 - `sr_sim.isoform.results.NSC.rda` contains the output of RSEM+STAR, and can be loaded into R to
 avoid running this part of the pipeline (see next section).
 - The rest of the files containing the `sr` prefix include intermediate step data. What they 
-correspond to and how they can be loaded is specified in the `sr_simulation_pipeline.R` script.
+correspond to and how they can be loaded is specified in the short read simulation vignette.
 
 ### Transcriptome files
 
@@ -49,32 +46,7 @@ source("sr_simulation_functions.R")
 load("data/sr_transcriptome.rda")
 ```
 
-as specified in the frist lines of the `sr_simulation_pipeline.R` script. Then, run the rest of the code chunk-by-chunk. 
-Running the entire script at once is strongly advised against, as the code contains options to run every step 
-of the pipeline as well as alternatives to load the already processed data (.rda files) to skip the most computationally 
-costly steps. Read the script carefully and follow the instructions in the comments, paying special attention to
-occassions where it will be necessary to load .rda files to proceed to the next step.
-
-### Running RSEM + STAR for the short read simulation
-
-The `sr_simulation_pipeline.R` script is divided into two parts: the generation of the simulated short
-reads, and the analysis of the expression matrix resulting from quantification of these reads. Although
-the processed RSEM results can be loaded from .rda files as described in the `sr_simulation_pipeline.R` script, 
-here we specify the commands used to replicate the short read mapping and quantification we performed:
-
-```
-# prepare the reference genome (must have the chromosome sequences of the mouse genome as fasta files)
-rsem-prepare-reference data/mouseM10/chromosomes rsem_ref/mouseM10 --gtf transcriptome/annotation.gtf
-
-# reads simulated across full-length transcripts are paired-end to ensure sufficient coverage
-rsem-calculate-expression --paired-end NSC_full_length/sample_01_1.fasta simulation/NSC_full/sample_01_2.fasta rsem_ref/mouseM10 rsem_results/NSC_full --no-qualities
-
-# example quantification of short reads generated from 100 nt fragments on the 3' end
-rsem-calculate-expression NSC_100nt/sample_01.fasta rsem_ref/mouseM10 rsem_results/NSC_100nt --no-qualities
-
-# move to rsem_results folder to begin the analysis detailed in the second part of the script
-cd rsem_results
-``` 
+as specified in the frist lines of the short read simulation vignette. Then, follow the rest of the vignette. 
 
 ### References
 
