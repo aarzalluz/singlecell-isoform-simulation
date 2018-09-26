@@ -273,7 +273,7 @@ ggplot() + ggtitle("Neural stem cells \n") +
   facet_grid(end ~ library, scales = "free", space = "free")
 ```
 
-![](NSC_pcnt.intervals_selected_newtheme.png)
+![](plots/NSC_pcnt.intervals_selected_newtheme.png)
 
 
 ### Analyse simulated length bias
@@ -311,5 +311,5 @@ ggplot(plot_trimming, aes(y = missing_pcnt, x = trim_length)) +
 
 ```
 
-![](percentage_missing_UMIs_singlecolor.png)
+![](plots/percentage_missing_UMIs_singlecolor.png)
 
