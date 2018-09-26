@@ -99,6 +99,9 @@ ggplot(mig.summary, aes(x = cell.no, y = MIG, fill = sample)) +
            size = 14, family = "AvantGarde", color = "gray20")
 ```
 
+![](no.of.mig.png)
+
+
 The second simulation analysis is dedicated to the amount of isoform switches observed between NSC and oligodendrocytes, and how many are observed in higher multiplexing situations. To evaluate this, we used the `compare_mig()` custom function, which performs a gene-by-gene comparison of the most expressed isoform per gene in the two samples, and returns the genes for which a switch is produced. 
 
 ```
@@ -135,4 +138,4 @@ ggplot(pch.summary, aes(x = cell.no, y = isoform_switches)) +
            size = 14, family = "AvantGarde", color = "gray20")
 ```
 
-
+![](no.iso.switches.png)

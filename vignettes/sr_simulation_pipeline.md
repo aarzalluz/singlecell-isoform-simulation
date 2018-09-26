@@ -273,6 +273,9 @@ ggplot() + ggtitle("Neural stem cells \n") +
   facet_grid(end ~ library, scales = "free", space = "free")
 ```
 
+![](NSC_pcnt.intervals_selected_newtheme.png)
+
+
 ### Analyse simulated length bias
 
 To ensure that the simulated UMI reads successfully recreate a coverage bias, we perform an analysis of the percentage of the trancripts that is left uncovered in each of our simulations (see Figure 5.a in our manuscript).
@@ -307,4 +310,6 @@ ggplot(plot_trimming, aes(y = missing_pcnt, x = trim_length)) +
   guides(fill = FALSE)
 
 ```
+
+![](percentage_missing_UMIs_singlecolor.png)
 
